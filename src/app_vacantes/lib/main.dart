@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'file_reader.dart';
 
 void main() {
   runApp(const MyApp());
