@@ -12,7 +12,7 @@ class _LegalScreenState extends State<LegalScreen> {
   @override
   void initState() {
     super.initState();
-    _closeScreenAfterDelay(); //Para cerrar la pantalla después de 10 segundos
+    _closeScreenAfterDelay(); //Para cerrar la pantalla después de 20 segundos
   }
   void _closeScreenAfterDelay() async {
     await Future.delayed(const Duration(seconds: 20));
