@@ -73,10 +73,11 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LegalScreen()),
-                    );
+                    MaterialPageRoute(
+                        builder: (context) => const LegalScreen()),
+                  );
                 },
                 child: const Text(
                   'Aviso Legal',
@@ -97,4 +98,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
