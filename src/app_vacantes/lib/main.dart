@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 import 'package:app_vacantes/widgets/nav_bar.dart';
+>>>>>>> 6b98f9264c19b4a50eaed772e4a5002498e0d68c
 import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +22,8 @@ class MyApp extends StatelessWidget {
       
       initialRoute: '/', //Ruta inicial
       routes: {
-        '/': (context) => SplashScreen(), //Ruta para SplashScreen
-        '/home': (context) => HomeScreen(), //Ruta para HomeScreen
+        '/': (context) => const SplashScreen(), //Ruta para SplashScreen
+        '/home': (context) => const HomeScreen(), //Ruta para HomeScreen
       },
     );
   }
