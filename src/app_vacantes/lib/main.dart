@@ -1,6 +1,4 @@
-import 'package:app_vacantes/screens/home_screen.dart';
-import 'package:app_vacantes/screens/splash_screen.dart';
-import 'package:app_vacantes/widgets/nav_bar.dart';
+import 'package:app_vacantes/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 
