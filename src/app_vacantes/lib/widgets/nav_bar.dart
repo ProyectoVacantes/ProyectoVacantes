@@ -1,10 +1,10 @@
-import 'package:app_vacantes/main.dart';
-import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/legal_screen.dart';
 import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeNavBar extends StatefulWidget{
+  const HomeNavBar({super.key});
+
   @override
   _HomeState createState() => _HomeState();
 }
