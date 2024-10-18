@@ -1,4 +1,5 @@
-import 'package:app_vacantes/nav_bar.dart';
+import 'package:app_vacantes/screens/home_screen.dart';
+import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
       
       initialRoute: '/', //Ruta inicial
       routes: {
-        '/': (context) => SplashScreen(), //Ruta para SplashScreen
-        '/home': (context) => HomeScreen(), //Ruta para HomeScreen
+        '/': (context) => const SplashScreen(), //Ruta para SplashScreen
+        '/home': (context) => const HomeScreen(), //Ruta para HomeScreen
       },
     );
   }
