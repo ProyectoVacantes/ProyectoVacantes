@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import 'package:app_vacantes/widgets/nav_bar.dart';
->>>>>>> 6b98f9264c19b4a50eaed772e4a5002498e0d68c
 import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
