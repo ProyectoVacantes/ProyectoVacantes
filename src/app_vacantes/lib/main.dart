@@ -1,6 +1,6 @@
 import 'package:app_vacantes/nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'scripts/file_reader.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      
       initialRoute: '/', //Ruta inicial
       routes: {
         '/': (context) => SplashScreen(), //Ruta para SplashScreen

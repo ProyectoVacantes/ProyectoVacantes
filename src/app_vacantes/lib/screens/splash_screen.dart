@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: screenWidth,
         height: screenHeight,
         padding: EdgeInsets.only(
-          top: screenHeight * 0.10, 
+          top: screenHeight * 0.10,
           left: screenWidth * 0.04,
           right: screenWidth * 0.04,
           bottom: screenHeight * 0.02,
