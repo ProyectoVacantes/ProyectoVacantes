@@ -1,9 +1,10 @@
-import 'package:app_vacantes/screens/home_screen.dart';
-import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:app_vacantes/screens/home_screen.dart';
+import 'package:app_vacantes/screens/legal_screen.dart';
+import 'package:app_vacantes/screens/main_screen.dart'; // Importa la nueva MainScreen
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,16 +13,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vacantes',
+      title: 'ProyectoVacantes',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
 
-      initialRoute: '/', //Ruta inicial
+      initialRoute: '/', // Ruta inicial
       routes: {
-        '/': (context) => const SplashScreen(), //Ruta para SplashScreen
-        '/home': (context) => const HomeScreen(), //Ruta para HomeScreen
+        '/': (context) => const MainScreen(), // Nueva pantalla principal
+        '/home': (context) => const HomeScreen(), // Ruta para HomeScreen
+        '/legal': (context) => const LegalScreen(), // Ruta para LegalScreen
       },
+      /* La aplicación cargará la nueva pantalla de inicio principal
+      (MainScreen) cuando se inicie.*/
+      /* Desde MainScreen, puedes navegar a la pantalla HomeScreen al presionar
+      el botón "Comenzar", y a la pantalla LegalScreen al presionar el tecto
+      "Aviso Legal".*/
     );
   }
 }
+
