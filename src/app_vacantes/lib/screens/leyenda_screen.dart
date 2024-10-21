@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//pantalla para info, leyenda y FAQ
+
 class LeyendaScreen extends StatelessWidget {
   const LeyendaScreen({super.key});
 
@@ -11,8 +13,8 @@ class LeyendaScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(screenWidth * 0.05),
-        decoration: const BoxDecoration(color: Color(0xFF49BB88)),
+        padding: EdgeInsets.all(screenWidth * 0.02),
+        decoration: const BoxDecoration(color: Color.fromRGBO(225, 245, 255, 1.0)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -20,59 +22,59 @@ class LeyendaScreen extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: screenWidth * 0.08, 
-                  height: screenWidth * 0.08,
+                  width: screenWidth * 0.02, 
+                  height: screenWidth * 0.02,
                   color: Colors.red,
                 ),
-                SizedBox(width: screenWidth * 0.05),
+                SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
                     'Texto rojo',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: screenWidth * 0.04,
+                      fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: screenHeight * 0.02),
 
             Row(
               children: [
                 Container(
-                  width: screenWidth * 0.08,
-                  height: screenWidth * 0.08,
+                  width: screenWidth * 0.02,
+                  height: screenWidth * 0.02,
                   color: const Color.fromARGB(255, 250, 104, 0),
                 ),
-                SizedBox(width: screenWidth * 0.05),
+                SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
                     'Texto naranja',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: screenWidth * 0.04,
+                      fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: screenHeight * 0.02),
 
             Row(
               children: [
                 Container(
-                  width: screenWidth * 0.08,
-                  height: screenWidth * 0.08,
+                  width: screenWidth * 0.02,
+                  height: screenWidth * 0.02,
                   color: const Color.fromARGB(255, 0, 106, 255),
                 ),
-                SizedBox(width: screenWidth * 0.05),
+                SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
                     'Texto azul',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: screenWidth * 0.04,
+                      fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),

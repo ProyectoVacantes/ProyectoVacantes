@@ -22,7 +22,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
         width: screenWidth,
         height: screenHeight,
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: Color.fromRGBO(225, 245, 255, 1.0),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -34,19 +34,19 @@ class _FiltroScreenState extends State<FiltroScreen> {
             children: [
             
               Text(
-                'Filtros',
+                'Consulta',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.07,
+                  fontSize: screenWidth * 0.03,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03),
+              SizedBox(height: screenHeight * 0.01),
 
               // Curso
               Text(
                 'Curso',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.05,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -55,7 +55,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
               Text(
                 'Cuerpo',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.05,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -64,7 +64,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
               Text(
                 'Especialidad',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.05,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -73,7 +73,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
               Text(
                 'Tipo de docente',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.05,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -82,7 +82,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
               Text(
                 'Provincias',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.05,
+                  fontSize: screenWidth * 0.02,
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -95,7 +95,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                     value: province,
                     child: Text(
                       province,
-                      style: TextStyle(fontSize: screenWidth * 0.045),
+                      style: TextStyle(fontSize: screenWidth * 0.01),
                     ),
                   );
                 }).toList(),
@@ -105,7 +105,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                   });
                 },
                 style: TextStyle(
-                  fontSize: screenWidth * 0.045, 
+                  fontSize: screenWidth * 0.01, 
                   color: Colors.black,
                 ),
                 isExpanded: true,
