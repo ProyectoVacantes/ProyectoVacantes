@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/legal_screen.dart';
+import 'package:app_vacantes/scripts/file_reader.dart'; // Asegúrate de que este archivo contenga la función para leer Excel
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  dynamic datos; // Variable para almacenar los datos leídos
+
   @override
   void initState() {
     super.initState();
@@ -17,21 +20,30 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    //Espera 1 segundos o carga datos
+    // Espera 1 segundo o carga datos
     await Future.delayed(const Duration(seconds: 1));
 
-    //Navega a la pantalla principal
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+    // Llama a la función que lee el archivo Excel
+    try {
+      datos = await excelToJson('assets/model_excel_app.xlsx'); // Ajusta la ruta al archivo Excel
+      print(datos); // Imprime los datos para verificar
+
+      // Navega a la pantalla principal
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }
+    } catch (e) {
+      print('Error al cargar los datos: $e');
+      // Manejo de errores si es necesario
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    //Ancho y alto de la pantalla
+    // Ancho y alto de la pantalla
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -62,13 +74,11 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             const SizedBox(height: 413),
-
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const LegalScreen()),
+                  MaterialPageRoute(builder: (context) => const LegalScreen()),
                 );
               },
               child: const Text(
