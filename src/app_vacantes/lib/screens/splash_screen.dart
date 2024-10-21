@@ -17,10 +17,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    // Espera 3 segundos o carga datos
+    //Espera 3 segundos o carga datos
     await Future.delayed(const Duration(seconds: 3));
 
-    // Navega a la pantalla principal
+    //Navega a la pantalla principal
     if (mounted) {
       Navigator.pushReplacement(
         context,
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Obtén el ancho y alto de la pantalla
+    //Ancho y alto de la pantalla
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -62,33 +62,24 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             const SizedBox(height: 413),
-            Container(
-              width: 266,
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LegalScreen()),
-                  );
-                },
-                child: const Text(
-                  'Aviso Legal',
-                  style: TextStyle(
-                    color: Color(0xFF49BB88),
-                    fontSize: 20,
-                    fontFamily: 'MuseoModerno',
-                    fontWeight: FontWeight.w700,
-                    height: 1,
-                    letterSpacing: -0.23,
-                  ),
+
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const LegalScreen()),
+                );
+              },
+              child: const Text(
+                'Aviso Legal',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 150, 226, 192),
+                  fontSize: 12,
+                  fontFamily: 'MuseoModerno',
+                  fontWeight: FontWeight.w700,
+                  height: 1,
+                  letterSpacing: -0.23,
                 ),
               ),
             ),
