@@ -39,6 +39,16 @@ class HomeScreen extends StatelessWidget {
                         size: screenWidth * 0.02, 
                       ), //icono de ejemplo
                     ),
+                    Marker(
+                      width: screenWidth * 0.1,
+                      height: screenWidth * 0.1,
+                      point: LatLng(38.18817, -3.60667),
+                      builder: (ctx) => Icon(
+                        Icons.location_on,
+                        color: const Color.fromARGB(255, 54, 206, 244),
+                        size: screenWidth * 0.02, 
+                      ), //icono de ejemplo 2
+                    ),
                   ],
                 ),
               ],

@@ -17,7 +17,7 @@ class _LegalScreenState extends State<LegalScreen> {
   }
 
   void _closeScreenAfterDelay() async {
-    await Future.delayed(const Duration(seconds: 20));
+    await Future.delayed(const Duration(seconds: 5));
     if (mounted) {
       Navigator.pushReplacement(
         context,
