@@ -17,7 +17,7 @@ class _LegalScreenState extends State<LegalScreen> {
   }
 
   void _closeScreenAfterDelay() async {
-    await Future.delayed(const Duration(seconds: 20));
+    await Future.delayed(const Duration(seconds: 10));
     if (mounted) {
       Navigator.pushReplacement(
         context,
@@ -31,20 +31,56 @@ class _LegalScreenState extends State<LegalScreen> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        body: Container(
-        decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(225, 245, 255, 1.0),
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           child: SingleChildScrollView(
-            child: Center(
-              child: Text(
-                legalText,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: screenWidth * 0.015,
-                  height: 1.5,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Aviso Legal',
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.04,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'MuseoModerno',
+                      color: Color.fromRGBO(1, 99, 148, 1),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                Center(
+                  child: Text(
+                    legalText,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.01,
+                      height: 1.5,
+                    ),
+                  ),
+                ),
+                //const SizedBox(height: 1),
+
+                Container(
+              width: screenWidth * 0.3, 
+              height: screenWidth * 0.3,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/logo1.png'),
+                  fit: BoxFit.contain,
                 ),
               ),
+            ),
+              ],
             ),
           ),
         ),
@@ -52,4 +88,3 @@ class _LegalScreenState extends State<LegalScreen> {
     );
   }
 }
-

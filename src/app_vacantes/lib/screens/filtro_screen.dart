@@ -38,6 +38,8 @@ class _FiltroScreenState extends State<FiltroScreen> {
                 style: TextStyle(
                   fontSize: screenWidth * 0.03,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'MuseoModerno',
+                  color: Color.fromRGBO(1, 99, 148, 1),
                 ),
               ),
               SizedBox(height: screenHeight * 0.01),

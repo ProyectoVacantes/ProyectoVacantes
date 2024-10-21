@@ -93,7 +93,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LegalScreen()),
                 );
