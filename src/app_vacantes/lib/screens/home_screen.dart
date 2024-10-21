@@ -4,7 +4,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+  final bool isCallingFromNavBar;
+
+  const HomeScreen({Key? key, this.isCallingFromNavBar = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-     bottomNavigationBar: HomeNavBar(),
+      bottomNavigationBar: isCallingFromNavBar == false
+        ? HomeNavBar(callingScreen: 0,)
+        : null,
     );
   }
 }

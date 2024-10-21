@@ -17,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    // Espera 3 segundos o carga datos
-    await Future.delayed(const Duration(seconds: 3));
+    //Espera 1 segundos o carga datos
+    await Future.delayed(const Duration(seconds: 1));
 
     // Navega a la pantalla HomeScreen
     if (mounted) {
