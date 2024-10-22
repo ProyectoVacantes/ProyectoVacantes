@@ -12,7 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  dynamic datos; // Variable para almacenar los datos leídos
 
   @override
   void initState() {
@@ -30,16 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
       datos = await excelToJson(Ruta); // Ajusta la ruta al archivo Excel
       print(datos); // Imprime los datos para verificar
 
-      // Navega a la pantalla principal
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-        );
-      }
-    } catch (e) {
-      print('Error al cargar los datos: $e');
-      // Manejo de errores si es necesario
+    // Navega a la pantalla principal
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
     }
   }
 
@@ -76,12 +71,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 1,
               ),
             ),
-            
-            
-            SizedBox(height: screenHeight * 0.001), 
-
+            SizedBox(height: screenHeight * 0.001),
             Container(
-              width: screenWidth * 0.3, 
+              width: screenWidth * 0.3,
               height: screenWidth * 0.3,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -90,9 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            
-            SizedBox(height: screenHeight * 0.25), 
-
+            SizedBox(height: screenHeight * 0.25),
             GestureDetector(
               onTap: () {
                 Navigator.push(
