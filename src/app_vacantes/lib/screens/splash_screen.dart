@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/legal_screen.dart';
-import 'package:app_vacantes/scripts/file_reader.dart'; // Asegúrate de que este archivo contenga la función para leer Excel
-import 'package:app_vacantes/scripts/filters.dart';
+import 'package:app_vacantes/scripts/file_reader.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,12 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void _navigateToHome() async {
     // Espera 1 segundo o carga datos
     await Future.delayed(const Duration(seconds: 1));
-
-    // Llama a la función que lee el archivo Excel
-    try {
-      var Ruta = Filtrado.localizarRuta();
-      datos = await excelToJson(Ruta); // Ajusta la ruta al archivo Excel
-      print(datos); // Imprime los datos para verificar
 
     // Navega a la pantalla principal
     if (mounted) {
