@@ -147,17 +147,17 @@ class HomeScreen extends StatelessWidget {
 
                 // Si hay datos, usa el MarkerLayer con los marcadores
                 return FlutterMap(
-              options: MapOptions(
+                  options: MapOptions(
                     center: LatLng(37.18817, -3.60667), // Coordenadas de inicio
-                zoom: 13.0,
-              ),
-              children: [
-                TileLayer(
+                    zoom: 13.0,
+                  ),
+                  children: [
+                    TileLayer(
                       urlTemplate:
                           'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  subdomains: ['a', 'b', 'c'],
-                ),
-                MarkerLayer(
+                      subdomains: ['a', 'b', 'c'],
+                    ),
+                    MarkerLayer(
                       markers: snapshot.data!, // Usa los datos obtenidos
                     ),
                   ],
@@ -182,7 +182,7 @@ class HomeScreen extends StatelessWidget {
           ? HomeNavBar(
               callingScreen: 0,
             )
-        : null,
+          : null,
     );
   }
 }
