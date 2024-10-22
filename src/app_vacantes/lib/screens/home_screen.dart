@@ -4,7 +4,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+  final bool isCallingFromNavBar;
+
+  const HomeScreen({Key? key, this.isCallingFromNavBar = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,16 @@ class HomeScreen extends StatelessWidget {
                         size: screenWidth * 0.02, 
                       ), //icono de ejemplo
                     ),
+                    Marker(
+                      width: screenWidth * 0.1,
+                      height: screenWidth * 0.1,
+                      point: LatLng(38.18817, -3.60667),
+                      builder: (ctx) => Icon(
+                        Icons.location_on,
+                        color: const Color.fromARGB(255, 54, 206, 244),
+                        size: screenWidth * 0.02, 
+                      ), //icono de ejemplo 2
+                    ),
                   ],
                 ),
               ],
@@ -57,7 +70,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: HomeNavBar(),
+      bottomNavigationBar: isCallingFromNavBar == false
+        ? HomeNavBar(callingScreen: 0,)
+        : null,
     );
   }
 }

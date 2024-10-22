@@ -1,12 +1,14 @@
-import 'package:app_vacantes/nav_bar.dart';
+import 'package:app_vacantes/screens/home_screen.dart';
+import 'package:app_vacantes/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,11 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      
+
       initialRoute: '/', //Ruta inicial
       routes: {
-        '/': (context) => SplashScreen(), //Ruta para SplashScreen
-        '/home': (context) => HomeScreen(), //Ruta para HomeScreen
+        '/': (context) => const SplashScreen(), //Ruta para SplashScreen
+        '/home': (context) => const HomeScreen(), //Ruta para HomeScreen
       },
     );
   }
