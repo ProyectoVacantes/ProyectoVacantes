@@ -78,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: screenHeight * 0.25),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LegalScreen()),
                 );

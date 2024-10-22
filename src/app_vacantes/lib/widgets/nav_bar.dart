@@ -1,6 +1,6 @@
 import 'package:app_vacantes/screens/filtro_screen.dart';
 import 'package:app_vacantes/screens/home_screen.dart';
-import 'package:app_vacantes/screens/legal_screen.dart';
+import 'package:app_vacantes/screens/leyenda_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeNavBar extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomeState extends State<HomeNavBar> {
   static const List<Widget> _screens = <Widget>[
     HomeScreen(isCallingFromNavBar: true),
     FiltroScreen(),
-    LegalScreen(),
+    LeyendaScreen(),
   ];
 
   @override

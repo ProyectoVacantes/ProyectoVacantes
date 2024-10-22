@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-//pantalla para info, leyenda y FAQ
-
 class LeyendaScreen extends StatelessWidget {
   const LeyendaScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -16,13 +13,38 @@ class LeyendaScreen extends StatelessWidget {
         padding: EdgeInsets.all(screenWidth * 0.02),
         decoration: const BoxDecoration(color: Color.fromRGBO(225, 245, 255, 1.0)),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Leyenda',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.03,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'MuseoModerno',
+                    color: Color.fromRGBO(1, 99, 148, 1),
+                  ),
+                ),
+                Container(
+                  width: screenWidth * 0.05,
+                  height: screenWidth * 0.05,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/logo1.png'),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: screenHeight * 0.005),
+
             Row(
               children: [
                 Container(
-                  width: screenWidth * 0.02, 
+                  width: screenWidth * 0.02,
                   height: screenWidth * 0.02,
                   color: Colors.red,
                 ),
@@ -31,14 +53,15 @@ class LeyendaScreen extends StatelessWidget {
                   child: Text(
                     'Texto rojo',
                     style: TextStyle(
-                      color: Colors.white,
+                      fontFamily: 'MuseoModerno',
+                      color: Color.fromRGBO(1, 99, 148, 1),
                       fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: screenHeight * 0.01),
 
             Row(
               children: [
@@ -52,14 +75,15 @@ class LeyendaScreen extends StatelessWidget {
                   child: Text(
                     'Texto naranja',
                     style: TextStyle(
-                      color: Colors.white,
+                      fontFamily: 'MuseoModerno',
+                      color: Color.fromRGBO(1, 99, 148, 1),
                       fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: screenHeight * 0.01),
 
             Row(
               children: [
@@ -73,13 +97,36 @@ class LeyendaScreen extends StatelessWidget {
                   child: Text(
                     'Texto azul',
                     style: TextStyle(
-                      color: Colors.white,
+                      fontFamily: 'MuseoModerno',
+                      color: Color.fromRGBO(1, 99, 148, 1),
                       fontSize: screenWidth * 0.015,
                     ),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: screenHeight * 0.04),
+            Text(
+              'Información',
+              style: TextStyle(
+                fontSize: screenWidth * 0.03,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'MuseoModerno',
+                color: Color.fromRGBO(1, 99, 148, 1),
+              ),
+            ),
+
+            SizedBox(height: screenHeight * 0.04),
+            
+            Text(
+              'FAQ',
+              style: TextStyle(
+                fontSize: screenWidth * 0.03,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'MuseoModerno',
+                color: Color.fromRGBO(1, 99, 148, 1),
+              ),
+            )
           ],
         ),
       ),
