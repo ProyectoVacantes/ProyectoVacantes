@@ -1,3 +1,4 @@
+import 'package:app_vacantes/scripts/filters.dart';
 import 'package:app_vacantes/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -73,7 +74,8 @@ class HomeScreen extends StatelessWidget {
 
     Future<List<Marker>> getCentrosMarkets() async {
       // Espera a que se carguen los datos desde el archivo Excel
-      var listaDeCentros = await excelToJson('assets/model_excel_app.xlsx');
+      var Ruta = Filtrado.localizarRuta();
+      var listaDeCentros = await excelToJson(Ruta);
       List<Marker> markers = [];
 
       listaDeCentros.forEach((centro) {
