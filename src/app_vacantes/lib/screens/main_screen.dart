@@ -22,12 +22,14 @@ class MainScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Color.fromRGBO(225, 245, 255, 1.0), // Color de fondo
         ),
-      /* El Container ocupa todo el ancho y alto de la pantalla. Se le aplica un color de fondo
+        /* El Container ocupa todo el ancho y alto de la pantalla. Se le aplica un color de fondo
       suave (BoxDecoration).*/
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centra el contenido verticalmente
-          crossAxisAlignment: CrossAxisAlignment.center, // Centra el contenido horizontalmente
-        /* El Column tiene las propiedades mainAxisAlignment: MainAxisAlignment.center y 
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Centra el contenido verticalmente
+          crossAxisAlignment:
+              CrossAxisAlignment.center, // Centra el contenido horizontalmente
+          /* El Column tiene las propiedades mainAxisAlignment: MainAxisAlignment.center y 
         crossAxisAlignment: CrossAxisAlignment.center para centrar todos los elementos tanto 
         vertical como horizontalmente.*/
           children: [
@@ -48,8 +50,8 @@ class MainScreen extends StatelessWidget {
 
             // Imagen centrada
             Container(
-              width: screenWidth * 0.4, // Ajusta el tamaño de la imagen
-              height: screenWidth * 0.4,
+              width: screenWidth * 0.2, // Ajusta el tamaño de la imagen
+              height: screenWidth * 0.2,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/logo1.png'),
@@ -68,7 +70,7 @@ class MainScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
-            // El ElevatedButton que navega a la pantalla HomeScreen al presionarlo.
+                // El ElevatedButton que navega a la pantalla HomeScreen al presionarlo.
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(
@@ -76,7 +78,8 @@ class MainScreen extends StatelessWidget {
                   vertical: screenHeight * 0.02,
                 ),
                 // El botón tiene un padding amplio para hacer clic más fácilmente.
-                backgroundColor: const Color.fromRGBO(1, 99, 148, 1), // Color del botón
+                backgroundColor:
+                    const Color.fromRGBO(1, 99, 148, 1), // Color del botón
               ),
               child: const Text(
                 'Comenzar búsqueda',
