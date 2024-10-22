@@ -1,0 +1,15 @@
+const List<String> especialidadmaestroartes = [
+"Dorado y Policromia",
+"Ebanisteria Artistica M.T.A.P.D.",
+"Encuadernacion Artistica",
+"Fotografia y Procesos De Reproduccion",
+"Moldes y Reproducciones",
+"Talla En Piedra y Madera",
+"Tecnicas Ceramicas",
+"Tecnicas De Grabado y Estampacion",
+"Tecnicas De Orfebreria y Plateria",
+"Tecnicas De Patronaje y Confeccion",
+"Tecnicas Del Metal M.T.A.P.D.",
+"Tecnicas Murales",
+"Tecnicas Textiles",
+""];
