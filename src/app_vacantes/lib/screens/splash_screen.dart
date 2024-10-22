@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/screens/legal_screen.dart';
-import 'package:app_vacantes/scripts/file_reader.dart'; // Asegúrate de que este archivo contenga la función para leer Excel
+import 'package:app_vacantes/scripts/file_reader.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
