@@ -8,6 +8,7 @@ import 'package:app_vacantes/texts/especialidadmaestroartes.dart';
 import 'package:app_vacantes/texts/especialidadeoi.dart';
 import 'package:app_vacantes/texts/especialidadmusica.dart';
 import 'package:app_vacantes/texts/especialidadarte.dart';
+import 'package:app_vacantes/scripts/filters.dart';
 
 class FiltroScreen extends StatefulWidget {
   const FiltroScreen({Key? key}) : super(key: key);
@@ -45,6 +46,15 @@ class _FiltroScreenState extends State<FiltroScreen> {
       _currentEspecialidades = [];
     }
     _selectedEspecialidades.clear();
+  }
+
+  Map<String, dynamic> obtenerFiltrosAplicados() {
+    return {
+      'curso': _selectedCurso,
+      'cuerpo': _selectedCuerpo,
+      'especialidades': _selectedEspecialidades,
+      'provincia': _selectedProvince,
+    };
   }
 
   @override
@@ -241,14 +251,14 @@ class _FiltroScreenState extends State<FiltroScreen> {
                       children: _currentEspecialidades.map((String especialidad) {
                         return Container(
                           padding: EdgeInsets.symmetric(
-                            vertical: screenHeight * 0.01, // Espacio vertical alrededor del checkbox
-                            horizontal: screenWidth * 0.02, // Espacio horizontal
+                            vertical: screenHeight * 0.01,
+                            horizontal: screenWidth * 0.02,
                           ),
                           child: Row(
                             children: [
                               SizedBox(
-                                width: screenWidth * 0.05, // Tamaño del checkbox
-                                height: screenWidth * 0.05, // Tamaño del checkbox
+                                width: screenWidth * 0.05,
+                                height: screenWidth * 0.05,
                                 child: Checkbox(
                                   value: _selectedEspecialidades.contains(especialidad),
                                   onChanged: (bool? selected) {
@@ -262,8 +272,8 @@ class _FiltroScreenState extends State<FiltroScreen> {
                                       }
                                           });
                                         },
-                                        activeColor: const Color.fromARGB(255, 115, 188, 247), // Cambia el color aquí
-                                        checkColor: const Color.fromARGB(255, 1, 129, 152), // Color del check (marca)
+                                        activeColor: const Color.fromARGB(255, 115, 188, 247),
+                                        checkColor: const Color.fromARGB(255, 1, 129, 152),
                                       ),
                                     ),
                                     Expanded(
@@ -335,14 +345,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Crear un mapa con las selecciones
-                      Map<String, dynamic> filtrosAplicados = {
-                        'curso': _selectedCurso,
-                        'cuerpo': _selectedCuerpo,
-                        'especialidades': _selectedEspecialidades,
-                        'provincia': _selectedProvince,
-                      };
-
+                      Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
@@ -351,7 +354,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                       ),
                       textStyle: TextStyle(
                         fontSize: screenWidth * 0.018,
-                        fontFamily: 'MuseoModerno',
+                        fontFamily: 'MuseoModerno'
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

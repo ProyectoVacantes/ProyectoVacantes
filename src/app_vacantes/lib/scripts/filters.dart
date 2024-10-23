@@ -1,4 +1,6 @@
 
+import 'package:app_vacantes/screens/filtro_screen.dart';
+
 class Filtrado {
 
 static String localizarRuta(){
@@ -56,6 +58,7 @@ late String especialidadPath;
     especialidadPath = especialidad;
     break;
   }
+
   String rutaExcel = "assets/model_excel_app.xlsx"; //"$anoPath/$cuerpo/$especialidadPath";
   return rutaExcel;
 }
