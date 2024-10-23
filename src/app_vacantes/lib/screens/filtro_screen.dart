@@ -69,7 +69,6 @@ class _FiltroScreenState extends State<FiltroScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: screenWidth,
-          height: screenHeight,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(225, 245, 255, 1.0),
           ),

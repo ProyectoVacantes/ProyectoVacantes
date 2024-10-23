@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_vacantes/screens/legal_screen.dart';
 
 class LeyendaScreen extends StatelessWidget {
   const LeyendaScreen({super.key});
@@ -51,7 +52,7 @@ class LeyendaScreen extends StatelessWidget {
                 SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
-                    'Texto rojo',
+                    'Centro de dificil desempeño',
                     style: TextStyle(
                       fontFamily: 'MuseoModerno',
                       color: Color.fromRGBO(1, 99, 148, 1),
@@ -73,7 +74,7 @@ class LeyendaScreen extends StatelessWidget {
                 SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
-                    'Texto naranja',
+                    'Centro de compensatoria',
                     style: TextStyle(
                       fontFamily: 'MuseoModerno',
                       color: Color.fromRGBO(1, 99, 148, 1),
@@ -95,7 +96,7 @@ class LeyendaScreen extends StatelessWidget {
                 SizedBox(width: screenWidth * 0.01),
                 Flexible(
                   child: Text(
-                    'Texto azul',
+                    'Centro normativo',
                     style: TextStyle(
                       fontFamily: 'MuseoModerno',
                       color: Color.fromRGBO(1, 99, 148, 1),
@@ -126,7 +127,30 @@ class LeyendaScreen extends StatelessWidget {
                 fontFamily: 'MuseoModerno',
                 color: Color.fromRGBO(1, 99, 148, 1),
               ),
-            )
+            ),
+            SizedBox(height: screenHeight * 0.25),
+
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LegalScreen()),
+                  );
+                },
+                child: const Text(
+                  'Aviso Legal',
+                  style: TextStyle(
+                    color: Color.fromRGBO(1, 99, 148, 1),
+                    fontSize: 12,
+                    fontFamily: 'MuseoModerno',
+                    fontWeight: FontWeight.w700,
+                    height: 1,
+                    letterSpacing: -0.23,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

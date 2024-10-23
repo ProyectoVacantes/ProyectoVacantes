@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/texts/legal_text.dart';
 
 class LegalScreen extends StatefulWidget {
@@ -60,7 +59,7 @@ class _LegalScreenState extends State<LegalScreen> {
                       ),
                     ),
                     CloseButton(
-                        color: Colors.red,
+                        color: Color.fromARGB(255, 0, 0, 0),
                         style: ButtonStyle(
                             backgroundColor:
                                 WidgetStatePropertyAll<Color>(Colors.white))),
