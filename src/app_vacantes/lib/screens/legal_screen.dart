@@ -44,28 +44,33 @@ class _LegalScreenState extends State<LegalScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 32.0),
-                        child: Text('Aviso Legal',
-                            style: TextStyle(
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Museo Moderno',
-                                color: Color.fromRGBO(1, 99, 148, 1)),
-                            textAlign: TextAlign.center),
-                      ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  const Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 32.0),
+                      child: Text('Aviso Legal',
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Museo Moderno',
+                              color: Color.fromRGBO(1, 99, 148, 1)),
+                          textAlign: TextAlign.center),
                     ),
-                    CloseButton(
-                        color: Colors.red,
-                        style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll<Color>(Colors.white))),
-                  ],
-                ),
+                  ),
+                  CloseButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      },
+                      color: Colors.red,
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll<Color>(Colors.white))),
+                ]),
 
                 const SizedBox(height: 20),
 

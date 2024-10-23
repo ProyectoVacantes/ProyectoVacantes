@@ -11,7 +11,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() async {
     // Espera 1 segundo o carga datos
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 3));
 
     // Navega a la pantalla principal
     if (mounted) {
@@ -78,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: screenHeight * 0.25),
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const LegalScreen()),
                 );
