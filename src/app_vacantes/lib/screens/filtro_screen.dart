@@ -329,13 +329,20 @@ class _FiltroScreenState extends State<FiltroScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
-                 
+                SizedBox(height: screenHeight * 0.02), 
+
                 // Botón para aplicar filtros
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Falta para que funcione y se apliquen los filtros
+                      // Crear un mapa con las selecciones
+                      Map<String, dynamic> filtrosAplicados = {
+                        'curso': _selectedCurso,
+                        'cuerpo': _selectedCuerpo,
+                        'especialidades': _selectedEspecialidades,
+                        'provincia': _selectedProvince,
+                      };
+
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
@@ -344,7 +351,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                       ),
                       textStyle: TextStyle(
                         fontSize: screenWidth * 0.018,
-                        fontFamily: 'MuseoModerno'
+                        fontFamily: 'MuseoModerno',
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -361,3 +368,4 @@ class _FiltroScreenState extends State<FiltroScreen> {
     );
   }
 }
+
