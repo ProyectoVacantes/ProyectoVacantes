@@ -51,12 +51,13 @@ late String especialidadPath;
     cuerpoPath = cuerpo;
     break;
   }
-  switch ("especialidad"){
+  /*switch ("especialidad"){
     case "Administración de empresas P.E.S.":
     especialidadPath = especialidad;
     break;
-  }
+  }*/
   String rutaExcel = "assets/model_excel_app.xlsx"; //"$anoPath/$cuerpo/$especialidadPath";
   return rutaExcel;
 }
-}
+ 
+  }
