@@ -13,10 +13,10 @@ class _LegalScreenState extends State<LegalScreen> {
   @override
   void initState() {
     super.initState();
-    _closeScreenAfterDelay();
+    //_closeScreenAfterDelay();
   }
 
-  void _closeScreenAfterDelay() async {
+  /*void _closeScreenAfterDelay() async {
     await Future.delayed(const Duration(seconds: 10));
     if (mounted) {
       Navigator.pushReplacement(
@@ -25,13 +25,14 @@ class _LegalScreenState extends State<LegalScreen> {
       );
     }
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Container(
+        padding: const EdgeInsets.all(16.0),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -43,19 +44,29 @@ class _LegalScreenState extends State<LegalScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Aviso Legal',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.04,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'MuseoModerno',
-                      color: Color.fromRGBO(1, 99, 148, 1),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 32.0),
+                        child: Text('Aviso Legal',
+                            style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Museo Moderno',
+                                color: Color.fromRGBO(1, 99, 148, 1)),
+                            textAlign: TextAlign.center),
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                  ),
+                    CloseButton(
+                        color: Colors.red,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll<Color>(Colors.white))),
+                  ],
                 ),
+
                 const SizedBox(height: 20),
 
                 Center(
@@ -71,15 +82,15 @@ class _LegalScreenState extends State<LegalScreen> {
                 //const SizedBox(height: 1),
 
                 Container(
-              width: screenWidth * 0.3, 
-              height: screenWidth * 0.3,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/logo1.png'),
-                  fit: BoxFit.contain,
+                  width: screenWidth * 0.3,
+                  height: screenWidth * 0.3,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/logo1.png'),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
-              ),
-            ),
               ],
             ),
           ),
