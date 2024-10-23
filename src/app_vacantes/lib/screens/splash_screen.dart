@@ -1,3 +1,4 @@
+import 'package:app_vacantes/screens/legal_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/screens/login_screen.dart';
 
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToLogin();
+    _navigateToHome();
   }
 
   void _navigateToHome() async {

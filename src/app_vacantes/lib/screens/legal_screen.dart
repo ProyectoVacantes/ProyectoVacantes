@@ -1,3 +1,5 @@
+import 'package:app_vacantes/screens/home_screen.dart';
+import 'package:app_vacantes/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/texts/legal_text.dart';
 
@@ -61,7 +63,7 @@ class _LegalScreenState extends State<LegalScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => LoginScreen(),
                           ),
                         );
                       },
