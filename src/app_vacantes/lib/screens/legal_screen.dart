@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/texts/legal_text.dart';
 
 class LegalScreen extends StatefulWidget {

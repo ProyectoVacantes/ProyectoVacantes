@@ -1,51 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app_vacantes/screens/login_screen.dart';
+import 'package:app_vacantes/screens/home_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
-
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _navigateToLogin();
-  }
-
-  void _navigateToHome() async {
-    // Espera 1 segundo o carga datos
-    await Future.delayed(const Duration(seconds: 3));
-
-    if (mounted) {
-      Navigator.of(context).pushReplacement(_createRoute());
-    }
-  }
-
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const LoginScreen(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = 0.0;
-        const end = 1.0;
-        const curve = Curves.fastEaseInToSlowEaseOut;
-
-        var fadeAnimation =
-            Tween(begin: begin, end: end).animate(CurvedAnimation(
-          parent: animation,
-          curve: curve,
-        ));
-
-        return FadeTransition(
-          opacity: fadeAnimation,
-          child: child,
-        );
-      },
-    );
-  }
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
     double responsiveFontSize = screenWidth * 0.08;
 
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(225, 245, 255, 1.0),
       body: Container(
         width: screenWidth,
         height: screenHeight,
@@ -85,36 +43,66 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             const SizedBox(height: 10),
+
             Hero(
               tag: 'logoimg',
               child: SizedBox(
                 width: screenWidth * 0.25,
                 height: screenWidth * 0.25,
-                child: const Image(
+                child: Image(
                   image: AssetImage('assets/logo1.png'),
                   fit: BoxFit.contain,
                 ),
               ),
             ),
-            SizedBox(height: screenHeight * 0.25),
-            GestureDetector(
-              onTap: () {
+
+            const SizedBox(height: 100),
+
+            // Botón login
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const LegalScreen()),
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
-              child: const Text(
-                'Aviso Legal',
-                style: TextStyle(
-                  color: Color.fromRGBO(116, 207, 252, 1),
-                  fontSize: 12,
-                  fontFamily: 'MuseoModerno',
-                  fontWeight: FontWeight.w700,
-                  height: 1,
-                  letterSpacing: -0.23,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.1,
+                  vertical: screenHeight * 0.02,
                 ),
+                textStyle: TextStyle(
+                  fontSize: screenWidth * 0.018,
+                  fontFamily: 'MuseoModerno',
+                  color: Color.fromRGBO(1, 99, 148, 1),
+                ),
+                backgroundColor: const Color.fromARGB(255, 128, 208, 249),
               ),
+              child: const Text('Iniciar Sesión'),
+            ),
+            const SizedBox(height: 20),
+
+            // Botón invitado
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.1,
+                  vertical: screenHeight * 0.02,
+                ),
+                textStyle: TextStyle(
+                  fontSize: screenWidth * 0.018,
+                  fontFamily: 'MuseoModerno',
+                  color: Color.fromRGBO(1, 99, 148, 1),
+                ),
+                backgroundColor: const Color.fromARGB(255, 128, 208, 249),
+              ),
+              child: const Text('Invitado'),
             ),
           ],
         ),

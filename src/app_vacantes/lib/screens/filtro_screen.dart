@@ -8,6 +8,7 @@ import 'package:app_vacantes/texts/especialidadmaestroartes.dart';
 import 'package:app_vacantes/texts/especialidadeoi.dart';
 import 'package:app_vacantes/texts/especialidadmusica.dart';
 import 'package:app_vacantes/texts/especialidadarte.dart';
+import 'package:app_vacantes/scripts/filters.dart';
 
 class FiltroScreen extends StatefulWidget {
   const FiltroScreen({Key? key}) : super(key: key);
@@ -47,6 +48,15 @@ class _FiltroScreenState extends State<FiltroScreen> {
     _selectedEspecialidades.clear();
   }
 
+  Map<String, dynamic> obtenerFiltrosAplicados() {
+    return {
+      'curso': _selectedCurso,
+      'cuerpo': _selectedCuerpo,
+      'especialidades': _selectedEspecialidades,
+      'provincia': _selectedProvince,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -59,7 +69,6 @@ class _FiltroScreenState extends State<FiltroScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: screenWidth,
-          height: screenHeight,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(225, 245, 255, 1.0),
           ),
@@ -241,14 +250,14 @@ class _FiltroScreenState extends State<FiltroScreen> {
                       children: _currentEspecialidades.map((String especialidad) {
                         return Container(
                           padding: EdgeInsets.symmetric(
-                            vertical: screenHeight * 0.01, // Espacio vertical alrededor del checkbox
-                            horizontal: screenWidth * 0.02, // Espacio horizontal
+                            vertical: screenHeight * 0.01,
+                            horizontal: screenWidth * 0.02,
                           ),
                           child: Row(
                             children: [
                               SizedBox(
-                                width: screenWidth * 0.05, // Tamaño del checkbox
-                                height: screenWidth * 0.05, // Tamaño del checkbox
+                                width: screenWidth * 0.05,
+                                height: screenWidth * 0.05,
                                 child: Checkbox(
                                   value: _selectedEspecialidades.contains(especialidad),
                                   onChanged: (bool? selected) {
@@ -262,8 +271,8 @@ class _FiltroScreenState extends State<FiltroScreen> {
                                       }
                                           });
                                         },
-                                        activeColor: const Color.fromARGB(255, 115, 188, 247), // Cambia el color aquí
-                                        checkColor: const Color.fromARGB(255, 1, 129, 152), // Color del check (marca)
+                                        activeColor: const Color.fromARGB(255, 115, 188, 247),
+                                        checkColor: const Color.fromARGB(255, 1, 129, 152),
                                       ),
                                     ),
                                     Expanded(
@@ -329,13 +338,13 @@ class _FiltroScreenState extends State<FiltroScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
-                 
+                SizedBox(height: screenHeight * 0.02), 
+
                 // Botón para aplicar filtros
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Falta para que funcione y se apliquen los filtros
+                      Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
@@ -361,3 +370,4 @@ class _FiltroScreenState extends State<FiltroScreen> {
     );
   }
 }
+
