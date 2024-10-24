@@ -1,5 +1,4 @@
 const List<String> cuerpos = [
-  'Todos',
   'Maestros',
   'Profesores de Secundaria',
   'Profesores Técnicos de FP',

@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/texts/provincias.dart';
 import 'package:app_vacantes/texts/cuerpos.dart';
+import 'package:app_vacantes/texts/especialidadmaestros.dart';
+import 'package:app_vacantes/texts/especialidadsecundaria.dart';
+import 'package:app_vacantes/texts/especialidadfp.dart';
+import 'package:app_vacantes/texts/especialidadmaestroartes.dart';
+import 'package:app_vacantes/texts/especialidadeoi.dart';
+import 'package:app_vacantes/texts/especialidadmusica.dart';
+import 'package:app_vacantes/texts/especialidadarte.dart';
+import 'package:app_vacantes/scripts/filters.dart';
 
 class FiltroScreen extends StatefulWidget {
-  const FiltroScreen({super.key});
+  const FiltroScreen({Key? key}) : super(key: key);
 
   @override
   _FiltroScreenState createState() => _FiltroScreenState();
@@ -11,11 +19,43 @@ class FiltroScreen extends StatefulWidget {
 
 class _FiltroScreenState extends State<FiltroScreen> {
   String? _selectedProvince = 'Todas';
-  String? _selectedCuerpo = 'Todos';
-  TextEditingController _searchController = TextEditingController();
-  String _hintText = "Busca tu centro";
-  
-  String _selectedCurso = '2024-2025';
+  String? _selectedCuerpo;
+  final TextEditingController _searchController = TextEditingController();
+  String _hintText = 'Buscar...';
+  String? _selectedCurso = '2024-2025';
+
+  List<String> _selectedEspecialidades = [];
+  List<String> _currentEspecialidades = [];
+
+  void _updateEspecialidades(String? selectedCuerpo) {
+    if (selectedCuerpo == 'Maestros') {
+      _currentEspecialidades = especialidadmaestros;
+    } else if (selectedCuerpo == 'Profesores de Secundaria') {
+      _currentEspecialidades = especialidadsecundaria;
+    } else if (selectedCuerpo == 'Profesores de EOI') {
+      _currentEspecialidades = especialidadeoi;
+    } else if (selectedCuerpo == 'Maestros de Taller de Artes Plásticas y Diseño') {
+      _currentEspecialidades = especialidadmaestroartes;
+    } else if (selectedCuerpo == 'Maestros de música y artes escénicas') {
+      _currentEspecialidades = especialidadmusica;
+    } else if (selectedCuerpo == 'Profesores de Artes Plásticas y Diseño') {
+      _currentEspecialidades = especialidadarte;
+    } else if (selectedCuerpo == 'Profesores Técnicos de FP') {
+      _currentEspecialidades = especialidadfp;
+    } else {
+      _currentEspecialidades = [];
+    }
+    _selectedEspecialidades.clear();
+  }
+
+  Map<String, dynamic> obtenerFiltrosAplicados() {
+    return {
+      'curso': _selectedCurso,
+      'cuerpo': _selectedCuerpo,
+      'especialidades': _selectedEspecialidades,
+      'provincia': _selectedProvince,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +66,6 @@ class _FiltroScreenState extends State<FiltroScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: screenWidth,
-          height: screenHeight,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(225, 245, 255, 1.0),
           ),
@@ -49,13 +88,14 @@ class _FiltroScreenState extends State<FiltroScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.02),
 
+                // Barra de búsqueda
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
                   child: TextField(
                     controller: _searchController,
                     onChanged: (text) {
                       setState(() {
-                        _hintText = text.isNotEmpty ? '' : 'Busca tu centro';
+                        _hintText = text.isNotEmpty ? '' : 'Buscar...';
                       });
                     },
                     decoration: InputDecoration(
@@ -88,84 +128,48 @@ class _FiltroScreenState extends State<FiltroScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.01),
+
+                SizedBox(height: screenHeight * 0.02),
 
                 // Curso
                 Text(
                   'Curso',
                   style: TextStyle(
                     fontSize: screenWidth * 0.02,
-                    fontFamily: 'MuseoModerno',
-                    ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
 
-                // Radio Buttons para seleccionar Curso
-                Row(
-                  children: [
-                    Radio<String>(
-                      value: '2022-2023',
+                // Seleccionar el curso
+                Column(
+                  children: ['2022-2023', '2023-2024', '2024-2025'].map((String curso) {
+                    return RadioListTile<String>(
+                      title: Text(
+                        curso,
+                        style: TextStyle(fontSize: screenWidth * 0.015),
+                      ),
+                      value: curso,
                       groupValue: _selectedCurso,
                       onChanged: (String? value) {
                         setState(() {
                           _selectedCurso = value!;
                         });
                       },
-                    ),
-                    Text(
-                      '2022-2023',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.015,
-                        fontFamily: 'MuseoModerno',
-                      ),
-                    ),
-                    SizedBox(width: screenWidth * 0.05),
-                    Radio<String>(
-                      value: '2023-2024',
-                      groupValue: _selectedCurso,
-                      onChanged: (String? value) {
-                        setState(() {
-                          _selectedCurso = value!;
-                        });
-                      },
-                    ),
-                    Text(
-                      '2023-2024',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.015,
-                        fontFamily: 'MuseoModerno',
-                      ),
-                    ),
-                    SizedBox(width: screenWidth * 0.05),
-                    Radio<String>(
-                      value: '2024-2025',
-                      groupValue: _selectedCurso,
-                      onChanged: (String? value) {
-                        setState(() {
-                          _selectedCurso = value!;
-                        });
-                      },
-                    ),
-                    Text(
-                      '2024-2025',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.015,
-                        fontFamily: 'MuseoModerno',
-                      ),
-                    ),
-                  ],
+                      activeColor: Colors.blue,
+                    );
+                  }).toList(),
                 ),
                 SizedBox(height: screenHeight * 0.02),
 
                 // Cuerpo
                 Text(
                   'Cuerpo',
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.02,
-                    fontFamily: 'MuseoModerno',
-                    ),
+                  style: TextStyle(fontSize: screenWidth * 0.02),
                 ),
                 SizedBox(height: screenHeight * 0.02),
+
+                // Seleccionar cuerpo
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
@@ -177,18 +181,31 @@ class _FiltroScreenState extends State<FiltroScreen> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButtonFormField<String>(
                       value: _selectedCuerpo,
-                      items: cuerpos.map((String cuerpo) {
-                        return DropdownMenuItem<String>(
-                          value: cuerpo,
+                      items: [
+                        DropdownMenuItem<String>(
+                          value: null,
                           child: Text(
-                            cuerpo,
-                            style: TextStyle(fontSize: screenWidth * 0.015),
+                            'Selecciona uno',
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.015,
+                              color: Colors.grey,
+                            ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                        ...cuerpos.map((String cuerpo) {
+                          return DropdownMenuItem<String>(
+                            value: cuerpo,
+                            child: Text(
+                              cuerpo,
+                              style: TextStyle(fontSize: screenWidth * 0.015),
+                            ),
+                          );
+                        }).toList(),
+                      ],
                       onChanged: (String? newValue) {
                         setState(() {
                           _selectedCuerpo = newValue;
+                          _updateEspecialidades(newValue);
                         });
                       },
                       style: TextStyle(
@@ -207,24 +224,81 @@ class _FiltroScreenState extends State<FiltroScreen> {
                 // Especialidad
                 Text(
                   'Especialidad',
-                  style: TextStyle(fontSize: screenWidth * 0.02),
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.02,
+                    fontFamily: 'MuseoModerno',
+                  ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
 
-                // Tipo de docente
-                Text(
-                  'Tipo de docente',
-                  style: TextStyle(fontSize: screenWidth * 0.02),
-                ),
+                // Seleccionar especialidad
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  width: double.infinity,
+                  constraints: BoxConstraints(
+                    maxHeight: screenHeight * 0.3,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: _currentEspecialidades.map((String especialidad) {
+                        return Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: screenHeight * 0.01,
+                            horizontal: screenWidth * 0.02,
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: screenWidth * 0.05,
+                                height: screenWidth * 0.05,
+                                child: Checkbox(
+                                  value: _selectedEspecialidades.contains(especialidad),
+                                  onChanged: (bool? selected) {
+                                    setState(() {
+                                      if (selected == true) {
+                                        if (_selectedEspecialidades.length < 2) {
+                                          _selectedEspecialidades.add(especialidad);
+                                        }
+                                      } else {
+                                        _selectedEspecialidades.remove(especialidad);
+                                      }
+                                          });
+                                        },
+                                        activeColor: const Color.fromARGB(255, 115, 188, 247),
+                                        checkColor: const Color.fromARGB(255, 1, 129, 152),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        especialidad,
+                                        style: TextStyle(fontSize: screenWidth * 0.015),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+
                 SizedBox(height: screenHeight * 0.02),
 
                 // Provincias
                 Text(
                   'Provincias',
-                  style: TextStyle(fontSize: screenWidth * 0.02),
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.02,
+                    fontFamily: 'MuseoModerno',
+                  ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
 
+                // Seleccionar provincias
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
@@ -247,7 +321,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
                       }).toList(),
                       onChanged: (String? newValue) {
                         setState(() {
-                          _selectedProvince = newValue;
+                          _selectedProvince = newValue ?? 'Todas';
                         });
                       },
                       style: TextStyle(
@@ -261,6 +335,30 @@ class _FiltroScreenState extends State<FiltroScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: screenHeight * 0.02), 
+
+                // Botón para aplicar filtros
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.05,
+                        vertical: screenHeight * 0.015,
+                      ),
+                      textStyle: TextStyle(
+                        fontSize: screenWidth * 0.018,
+                        fontFamily: 'MuseoModerno'
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text('Aplicar Filtros'),
+                  ),
+                ),
               ],
             ),
           ),
@@ -269,3 +367,4 @@ class _FiltroScreenState extends State<FiltroScreen> {
     );
   }
 }
+
