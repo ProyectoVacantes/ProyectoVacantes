@@ -63,9 +63,6 @@ class _FiltroScreenState extends State<FiltroScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Filtro Screen'),
-      ),
       body: SingleChildScrollView(
         child: Container(
           width: screenWidth,

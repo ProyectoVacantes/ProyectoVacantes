@@ -97,26 +97,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
             ),
-            SizedBox(height: screenHeight * 0.25),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LegalScreen()),
-                );
-              },
-              child: const Text(
-                'Aviso Legal',
-                style: TextStyle(
-                  color: Color.fromRGBO(116, 207, 252, 1),
-                  fontSize: 12,
-                  fontFamily: 'MuseoModerno',
-                  fontWeight: FontWeight.w700,
-                  height: 1,
-                  letterSpacing: -0.23,
-                ),
-              ),
-            ),
           ],
         ),
       ),

@@ -1,5 +1,4 @@
-import 'package:app_vacantes/screens/home_screen.dart';
-import 'package:app_vacantes/screens/login_screen.dart';
+import 'package:app_vacantes/screens/leyenda_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/texts/legal_text.dart';
 
@@ -14,19 +13,8 @@ class _LegalScreenState extends State<LegalScreen> {
   @override
   void initState() {
     super.initState();
-    //_closeScreenAfterDelay();
   }
 
-  /*void _closeScreenAfterDelay() async {
-    await Future.delayed(const Duration(seconds: 10));
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
-    }
-  }
-*/
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -63,17 +51,20 @@ class _LegalScreenState extends State<LegalScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
+                            builder: (context) => LeyendaScreen(), // Va a la pantalla de leyenda (info) porque es donde se encuentra, ya no está en la splash por si no da tiempo a clickar.
                           ),
                         );
                       },
-                      color: Colors.red,
+                      color: const Color.fromARGB(255, 0, 0, 0),
                       style: const ButtonStyle(
                           backgroundColor:
-                              WidgetStatePropertyAll<Color>(Colors.white))),
-                ]),
-
-                const SizedBox(height: 20),
+                              WidgetStatePropertyAll<Color>(Color.fromRGBO(225, 245, 255, 1.0),
+                          )
+                        )
+                      ),
+                ]
+              ),
+              const SizedBox(height: 20),
 
                 Center(
                   child: Text(
