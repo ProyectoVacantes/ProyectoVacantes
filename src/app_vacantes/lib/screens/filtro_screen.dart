@@ -1,3 +1,4 @@
+import 'package:app_vacantes/scripts/file_reader.dart';
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/texts/provincias.dart';
 import 'package:app_vacantes/texts/cuerpos.dart';
@@ -14,15 +15,15 @@ class FiltroScreen extends StatefulWidget {
   const FiltroScreen({Key? key}) : super(key: key);
 
   @override
-  _FiltroScreenState createState() => _FiltroScreenState();
+  FiltroScreenState createState() => FiltroScreenState();
 }
 
-class _FiltroScreenState extends State<FiltroScreen> {
-  String? _selectedProvince = 'Todas';
+class FiltroScreenState extends State<FiltroScreen> {
+  String? _selectedProvince ;
   String? _selectedCuerpo;
   final TextEditingController _searchController = TextEditingController();
   String _hintText = 'Buscar...';
-  String? _selectedCurso = '2024-2025';
+  String? _selectedCurso ;
 
   List<String> _selectedEspecialidades = [];
   List<String> _currentEspecialidades = [];
@@ -49,7 +50,7 @@ class _FiltroScreenState extends State<FiltroScreen> {
   }
 
   Map<String, dynamic> obtenerFiltrosAplicados() {
-    return {
+    return  {
       'curso': _selectedCurso,
       'cuerpo': _selectedCuerpo,
       'especialidades': _selectedEspecialidades,
@@ -340,8 +341,9 @@ class _FiltroScreenState extends State<FiltroScreen> {
                 // Botón para aplicar filtros
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
+                    onPressed: () async {
+                    Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
+                    var resultado = Filtrado.obtenerResultados(filtrosAplicados);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(

@@ -1,3 +1,4 @@
+import 'package:app_vacantes/screens/filtro_screen.dart';
 import 'package:app_vacantes/scripts/filters.dart';
 import 'package:app_vacantes/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -74,11 +75,14 @@ class HomeScreen extends StatelessWidget {
 
     Future<List<Marker>> getCentrosMarkets() async {
       // Espera a que se carguen los datos desde el archivo Excel
-      var Ruta = Filtrado.localizarRuta();
-      var listaDeCentros = await excelToJson(Ruta);
+      var consulta = FiltroScreenState().obtenerFiltrosAplicados();
+      var listaDeCentros = await Filtrado.obtenerResultados(consulta);
+      print(listaDeCentros);
       List<Marker> markers = [];
 
       listaDeCentros.forEach((centro) {
+        print(centro["latitud"]);
+        print(centro["longitud"]);
         int idCentro = int.parse(centro['id del centro'].toString());
         int curso = int.parse(centro['curso'].toString());
         String nombreCentro = centro['nombre del centro'].toString();
