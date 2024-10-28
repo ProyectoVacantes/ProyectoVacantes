@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/screens/legal_screen.dart';
-import 'package:app_vacantes/texts/infotext.dart';
+import 'package:app_vacantes/texts/infoText.dart';
 import 'package:app_vacantes/texts/FAQfiltro.dart';
 import 'package:app_vacantes/texts/FAQcentro.dart';
 import 'package:app_vacantes/texts/FAQadjudicaciones.dart';
@@ -13,7 +13,6 @@ class LeyendaScreen extends StatefulWidget {
 }
 
 class _LeyendaScreenState extends State<LeyendaScreen> {
-  
   // Solo se expande una pregunta en el FAQ
   bool isExpandedFiltro = false;
   bool isExpandedCentro = false;
@@ -46,7 +45,8 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(screenWidth * 0.02),
-          decoration: const BoxDecoration(color: Color.fromRGBO(225, 245, 255, 1.0)),
+          decoration:
+              const BoxDecoration(color: Color.fromRGBO(225, 245, 255, 1.0)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -153,7 +153,7 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
               ),
               SizedBox(height: screenHeight * 0.04),
 
-                // Información
+              // Información
               Text(
                 'Información',
                 style: TextStyle(
@@ -204,7 +204,8 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
                 onExpansionChanged: (isExpanded) => toggleExpansion('filtro'),
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
                     child: Text(
                       FAQfiltro,
                       style: TextStyle(
@@ -233,7 +234,8 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
                 onExpansionChanged: (isExpanded) => toggleExpansion('centro'),
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
                     child: Text(
                       FAQcentro,
                       style: TextStyle(
@@ -259,10 +261,12 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
                     color: const Color.fromRGBO(1, 99, 148, 1),
                   ),
                 ),
-                onExpansionChanged: (isExpanded) => toggleExpansion('adjudicaciones'),
+                onExpansionChanged: (isExpanded) =>
+                    toggleExpansion('adjudicaciones'),
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
                     child: Text(
                       FAQadjudicaciones,
                       style: TextStyle(
@@ -284,7 +288,8 @@ class _LeyendaScreenState extends State<LeyendaScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LegalScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const LegalScreen()),
                     );
                   },
                   child: const Text(
