@@ -1,3 +1,4 @@
+import 'package:app_vacantes/screens/filtro_screen.dart';
 import 'package:app_vacantes/scripts/filters.dart';
 import 'package:app_vacantes/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +7,10 @@ import 'package:latlong2/latlong.dart';
 import '../scripts/file_reader.dart';
 
 class HomeScreen extends StatelessWidget {
-
+  final List<Map<String, dynamic>>? resultado;
   final bool isCallingFromNavBar;
 
-  const HomeScreen({Key? key, this.isCallingFromNavBar = false})
+  const HomeScreen({Key? key, this.isCallingFromNavBar = false,this.resultado})
       : super(key: key);
 
   @override
@@ -17,117 +18,9 @@ class HomeScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    void _showMarkerInfo({
-      required int idCentro,
-      required String nombreCentro,
-      required String tipologia,
-      required String direccion,
-      required String telefono,
-      required String? paginaWeb,
-    }) {
-      // Muestra una tarjeta emergente con información del marcador
-      showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '📖 $nombreCentro',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 8),
-                Text('$tipologia'),
-                SizedBox(height: 4),
-                Text('📍 $direccion'),
-                SizedBox(height: 4),
-                Text('☎️ $telefono'),
-                if (paginaWeb != null)
-                  TextButton(
-                    onPressed: () {
-                      // Lógica para abrir la página web
-                      // Por ejemplo: launch(paginaWeb); (requiere 'url_launcher' en pubspec.yaml)
-                    },
-                    child: Text('🌐 Visitar Página Web',
-                        style: TextStyle(color: Colors.blue)),
-                  ),
-                SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // Cierra la tarjeta emergente
-                  },
-                  child: Text('Cerrar'),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-    }
+    
 
-    Future<List<Marker>> getCentrosMarkets() async {
-      // Espera a que se carguen los datos desde el archivo Excel
-      var Ruta = Filtrado.localizarRuta();
-      var listaDeCentros = await excelToJson(Ruta);
-      List<Marker> markers = [];
 
-      listaDeCentros.forEach((centro) {
-        int idCentro = int.parse(centro['id del centro'].toString());
-        int curso = int.parse(centro['curso'].toString());
-        String nombreCentro = centro['nombre del centro'].toString();
-        String tipologia = centro['tipologia'].toString();
-        String codigoCentro = centro['código del centro'].toString();
-        String tipoCentro = centro['tipo de centro'].toString();
-        String direccion = centro['dirección'].toString();
-        String localidad = centro['localidad'].toString();
-        String provincia = centro['provincia'].toString();
-        String municipio = centro['municipio'].toString();
-        String codigoMunicipio = centro['código de municipo'].toString();
-        int codigoPostal = int.parse(centro['código postal'].toString());
-
-        // Reemplaza la coma por un punto antes de convertir a double
-        double latitud =
-            double.parse(centro['latitud'].toString().replaceAll(',', '.'));
-        double longitud =
-            double.parse(centro['longitud'].toString().replaceAll(',', '.'));
-
-        String telefono = centro['teléfono'].toString();
-        String correoElectronico = centro['correo electrónico'].toString();
-        String? paginaWeb = centro['página web']?.toString();
-        String? numeroEstudiantes = centro['nº de estudiantes']?.toString();
-        String? servicios = centro['servicios']?.toString();
-        String? ampa = centro['AMPA?']?.toString();
-
-        // Agrega un marcador a la lista
-        markers.add(Marker(
-            point: LatLng(latitud, longitud),
-            builder: (ctx) => GestureDetector(
-                  onTap: () {
-                    _showMarkerInfo(
-                      idCentro: idCentro,
-                      nombreCentro: nombreCentro,
-                      tipologia: tipologia,
-                      direccion: direccion,
-                      telefono: telefono,
-                      paginaWeb: paginaWeb,
-                    );
-                  },
-                  child: Icon(
-                    Icons.location_on,
-                    color: const Color.fromARGB(255, 255, 0, 0),
-                    size: 25,
-                  ),
-                )));
-      });
-      return markers;
-    }
 
     return Scaffold(
       body: Stack(
@@ -137,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             height: screenHeight,
             child: FutureBuilder<List<Marker>>(
               future:
-                  getCentrosMarkets(), // Llama a tu función que obtiene los marcadores
+                  getCentrosMarkets(context), // Llama a tu función que obtiene los marcadores
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
@@ -187,4 +80,115 @@ class HomeScreen extends StatelessWidget {
           : null,
     );
   }
+      Future<List<Marker>> getCentrosMarkets(context) async {
+      // Espera a que se carguen los datos desde el archivo Excel
+      List<Marker> markers = [];
+      var lista = await excelToJson("assets/model_excel_app.xlsx");
+      //print(resultado);
+      resultado?.forEach((centro) {
+        int idCentro = int.parse(centro['id del centro'].toString());
+        int curso = int.parse(centro['curso'].toString());
+        String nombreCentro = centro['nombre del centro'].toString();
+        String tipologia = centro['tipologia'].toString();
+        String codigoCentro = centro['código del centro'].toString();
+        String tipoCentro = centro['tipo de centro'].toString();
+        String direccion = centro['dirección'].toString();
+        String localidad = centro['localidad'].toString();
+        String provincia = centro['provincia'].toString();
+        String municipio = centro['municipio'].toString();
+        String codigoMunicipio = centro['código de municipo'].toString();
+        int codigoPostal = int.parse(centro['código postal'].toString());
+
+        // Reemplaza la coma por un punto antes de convertir a double
+        double latitud =
+            double.parse(centro['latitud'].toString().replaceAll(',', '.'));
+            //print(latitud);
+        double longitud =
+            double.parse(centro['longitud'].toString().replaceAll(',', '.'));
+            //print(longitud);
+        String telefono = centro['teléfono'].toString();
+        String correoElectronico = centro['correo electrónico'].toString();
+        String? paginaWeb = centro['página web']?.toString();
+        String? numeroEstudiantes = centro['nº de estudiantes']?.toString();
+        String? servicios = centro['servicios']?.toString();
+        String? ampa = centro['AMPA?']?.toString();
+
+        // Agrega un marcador a la lista
+        markers.add(Marker(
+            point: LatLng(latitud, longitud),
+            builder: (ctx) => GestureDetector(
+                  onTap: () {
+                    showMarkerInfo(
+                      context,
+                      idCentro: idCentro,
+                      nombreCentro: nombreCentro,
+                      tipologia: tipologia,
+                      direccion: direccion,
+                      telefono: telefono,
+                      paginaWeb: paginaWeb,
+                      );
+                  },
+                  child: Icon(
+                    Icons.location_on,
+                    color: const Color.fromARGB(255, 255, 0, 0),
+                    size: 25,
+                  ),
+                )));
+      });
+      return markers;
+    }
 }
+void showMarkerInfo(context,{
+      int? idCentro,
+      String? nombreCentro,
+      String? tipologia,
+      String? direccion,
+      String? telefono,
+      String? paginaWeb,
+    }) {
+      // Muestra una tarjeta emergente con información del marcador
+      showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '📖 $nombreCentro',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text('$tipologia'),
+                SizedBox(height: 4),
+                Text('📍 $direccion'),
+                SizedBox(height: 4),
+                Text('☎️ $telefono'),
+                if (paginaWeb != null)
+                  TextButton(
+                    onPressed: () {
+                      // Lógica para abrir la página web
+                      // Por ejemplo: launch(paginaWeb); (requiere 'url_launcher' en pubspec.yaml)
+                    },
+                    child: Text('🌐 Visitar Página Web',
+                        style: TextStyle(color: Colors.blue)),
+                  ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Cierra la tarjeta emergente
+                  },
+                  child: Text('Cerrar'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
