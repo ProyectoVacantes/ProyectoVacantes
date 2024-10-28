@@ -1,3 +1,4 @@
+import 'package:app_vacantes/screens/home_screen.dart';
 import 'package:app_vacantes/scripts/file_reader.dart';
 import 'package:flutter/material.dart';
 import 'package:app_vacantes/texts/provincias.dart';
@@ -343,7 +344,13 @@ class FiltroScreenState extends State<FiltroScreen> {
                   child: ElevatedButton(
                     onPressed: () async {
                     Map<String, dynamic> filtrosAplicados = obtenerFiltrosAplicados();
-                    var resultado = Filtrado.obtenerResultados(filtrosAplicados);
+                    var resultado = await Filtrado.obtenerResultados(filtrosAplicados);
+                     Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen (resultado:resultado),
+                    )
+                     );
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
