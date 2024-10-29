@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "895267019802",
+    "project_id": "flutter-vacantes",
+    "storage_bucket": "flutter-vacantes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895267019802:android:4362e97eb84770fcc6c5a3",
+        "android_client_info": {
+          "package_name": "proyecto.vacantes.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895267019802-1s7vkao325369b0k02dr9d4emra89j93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG6ESA9TEKJpt1wiwOtnG1GiGKGm-AdS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895267019802-1s7vkao325369b0k02dr9d4emra89j93.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "895267019802-gp7k8fe3olnfkiusi846p4k41ngp9pq8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appVacantes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
